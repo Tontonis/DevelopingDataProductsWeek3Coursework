@@ -1,0 +1,52 @@
+---
+title: "Terrorism in Europe"
+author: "Hugo Day"
+date: "15 August 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+library(dplyr)
+dataRaw<-read.csv2("./eu_terrorism_fatalities_by_country.csv",header = TRUE,sep=",") 
+```
+
+```
+
+## Deaths by Terrorism: An example analysis
+
+This is a presentation for you dear presenter, to take part in exploring the wonderful power of Plot.ly and R markdown. To illustrate this we're going to use the terrorism data provided by FiveThirtyEight. Go to the next side to witness the true power of the this tool set.
+
+## Plots most Erksome
+
+```{r, echo=FALSE, warning=FALSE}
+f <- list(
+  family = "Courier New, monospace",
+  size = 18,
+  color = "#7f7f7f"
+)
+x <- list(
+  title = "Year",
+  titlefont = f
+)
+y <- list(
+  title = "Deaths by Terrorism",
+  titlefont = f
+)
+
+p<-plot_ly(data=dataRaw,x=~iyear, y=~Belgium,name="Belgium",type="scatter",mode="lines") %>%
+  add_trace(x=~iyear,y=~Denmark,name="Denmark") %>%
+  add_trace(x=~iyear,y=~France,name="France") %>%
+  add_trace(x=~iyear,y=~Germany,name="Germany") %>%
+  add_trace(x=~iyear,y=~Greece,name="Greece") %>%
+  add_trace(x=~iyear,y=~Ireland,name="Ireland") %>%
+  add_trace(x=~iyear,y=~Italy,name="Italy") %>%
+  add_trace(x=~iyear,y=~Luxembourg,name="Luxembourg") %>%
+  add_trace(x=~iyear,y=~Netherlands,name="Netherlands") %>%
+  add_trace(x=~iyear,y=~Portugal,name="Portugal") %>%
+  add_trace(x=~iyear,y=~Spain,name="Spain") %>%
+  add_trace(x=~iyear,y=~United.Kingdom,name="United Kingdom") %>%
+  layout(xaxis=x,yaxis=y)
+p
+```
